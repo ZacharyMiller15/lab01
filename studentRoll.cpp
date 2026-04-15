@@ -9,12 +9,18 @@ void StudentRoll::insertAtTail(const Student &s) {
   Student* student = new Student(s.getName(), s.getPerm());
   
   if (!head) {
-    head = new Node(student);
+    head = new Node;
+    head->s = student;
+    head->next = nullptr;
+    
     tail = head;
     return;
   }
 
-  tail->next = new Node(student);
+  tail->next = new Node;
+  tail->next->s = student;
+  tail->next->next = nullptr;
+
   tail = tail->next;
 }
 
@@ -38,14 +44,19 @@ StudentRoll::StudentRoll(const StudentRoll &orig) {
   } else {
     Node* o_curr = orig.head;
     Student* s = new Student(o_curr->s->getName(), o_curr->s->getPerm());
-    head = new Node(s);
+    head = new Node;
+    head->s = s;
+    head->next = nullptr;
+
     if (!o_curr->next) tail = head;
     o_curr = o_curr->next;
 
     Node* curr = head;
     while (o_curr) {
       s = new Student(o_curr->s->getName(), o_curr->s->getPerm());
-      curr->next = new Node(s);
+      curr->next = new Node;
+      curr->next->s = s;
+      curr->next->next = nullptr;
 
       curr = curr->next;
       o_curr = o_curr->next;
@@ -90,14 +101,19 @@ StudentRoll & StudentRoll::operator =(const StudentRoll &right ) {
 
   Node* r_curr = right.head;
   Student* s = new Student(r_curr->s->getName(), r_curr->s->getPerm());
-  head = new Node(s);
+  head = new Node;
+  head->s = s;
+  head->next = nullptr;
+
   if (!r_curr->next) tail = head;
   r_curr = r_curr->next;
 
   curr = head;
   while (r_curr) {
     s = new Student(r_curr->s->getName(), r_curr->s->getPerm());
-    curr->next = new Node(s);
+    curr->next = new Node;
+    curr->next->s = s;
+    curr->next->next = nullptr;
 
     curr = curr->next;
     r_curr = r_curr->next;
