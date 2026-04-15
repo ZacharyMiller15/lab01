@@ -19,7 +19,10 @@ class StudentRoll {
   struct Node {
     Student *s;
     Node *next;
+
+    Node(Student* student) : s(student), next(nullptr) {}
   };
+
   Node *head;
   Node *tail;
 };

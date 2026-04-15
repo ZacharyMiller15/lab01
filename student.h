@@ -22,7 +22,7 @@ class Student {
 
  private:
   int perm;
-  char *name; // allocated on heap
+  char *name = nullptr; // allocated on heap
 };
 
 
